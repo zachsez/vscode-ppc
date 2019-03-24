@@ -2,7 +2,7 @@
 
 msg:
 	.string "Hello, world!\n"
-	len = . - msg       # length of our dear string
+	len = . - msg			# length of string
 
 .text                       # section declaration - begin code
 

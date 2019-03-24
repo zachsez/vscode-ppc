@@ -258,7 +258,7 @@
 					"name": "keyword.mnemonic.load.string"
 				},
 				{
-					"match": "\\blmw\\b",
+					"match": "\\b(lmw|li|lis)\\b",
 					"name": "keyword.mnemonic.load.misc"
 				}
 			]
