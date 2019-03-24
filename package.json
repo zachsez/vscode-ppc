@@ -22,5 +22,9 @@
             "scopeName": "source.powerpc",
             "path": "./syntaxes/powerpc.tmLanguage.json"
         }]
+    },
+    "repository": {
+        "url": "https://github.com/zachsez/vscode-ppc",
+        "type": "git"
     }
 }
