@@ -4,6 +4,10 @@
     "description": "PowerPC Assembly Language Support",
     "version": "0.0.1",
     "publisher": "zachsez",
+    "author": {
+        "name": "Zach Szczesniak"
+    },
+    "icon": "images/logo.PNG",
     "engines": {
         "vscode": "^1.32.0"
     },
