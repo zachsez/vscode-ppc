@@ -1,0 +1,25 @@
+{
+    "name": "vcode-ppc",
+    "displayName": "vscode-ppc",
+    "description": "PowerPC Assembly Language Support",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.32.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "powerpc",
+            "aliases": ["PowerPC Assembly", "powerpc"],
+            "extensions": [".S",".s",".asm",".ppc"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "powerpc",
+            "scopeName": "source.powerpc",
+            "path": "./syntaxes/powerpc.tmLanguage.json"
+        }]
+    }
+}

@@ -1,0 +1,399 @@
+{
+	"scopeName": "source.powerpc",
+	"name": "PowerPC Assembly",
+	"fileTypes": [
+		"s",
+		"S",
+		"asm",
+		"ppc"
+	],
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#constants"			
+		},
+		{
+			"include": "#entities"
+		},
+		{
+			"include": "#mnemonic"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.powerpc",
+				"match": "\\b(if|while|for|return)\\b"
+			}]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"match": "(#).*$",
+					"name": "comment.line.number-sign.powerpc"
+				},
+				{
+					"match": "(//).*S",
+					"name": "comment.line.double-slash.powerpc"
+				},
+				{
+					"name": "comment.block.powerpc",
+					"begin": "\\/\\*",
+					"beginCaptures": {
+					  "0": {
+						"name": "comment.begin.powerpc"
+					  }
+					},
+					"endCaptures": {
+					  "0": {
+						"name": "comment.end.powerpc"
+					  }
+					},
+					"end": "\\*\\/"
+				}
+			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"begin": "\"",
+					"end": "\"",
+					"name": "string.quoted.double.powerpc"
+				},
+				{
+					"match": "\\'\\S\\'",
+					"name": "string.quoted.single.powerpc"
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"match": "\\b[0-9_]+\\b",
+					"name": "constant.numeric.dec.powerpc"
+				},
+				{
+					"match": "\\b0[xX][0-9a-fA-F_]+\\b",
+					"name": "constant.numeric.hex.powerpc"
+				},
+				{
+					"match": "\\b0[bB][0-1_]+\\b",
+					"name": "constant.numeric.bin.powerpc"
+				},
+				{
+					"match": "\\b0[0-7_]+\\b",
+					"name": "constant.numeric.oct.powerpc"
+				}
+			]
+		},
+		"entities": {
+			"patterns": [
+				{
+					"match": "\\.(text|data|bss)",
+					"name": "entity.name.section.powerpc"
+				},
+				{
+					"match": "\\w+:",
+					"name": "entity.name.function.powerpc"
+				}
+			]
+		},
+		"mnemonic": {
+			"patterns": [
+				{
+					"include": "#mnemonic-add"
+				},
+				{
+					"include": "#mnemonic-and"
+				},
+				{
+					"include": "#mnemonic-branch"
+				},
+				{
+					"include": "#mnemonic-compare"
+				},
+				{
+					"include": "#mnemonic-data-cache"
+				},
+				{
+					"include": "#mnemonic-divide"
+				},
+				{
+					"include": "#mnemonic-load"
+				},
+				{
+					"include": "#mnemonic-move"
+				},
+				{
+					"include": "#mnemonic-multiple"
+				},
+				{
+					"include": "#mnemonic-or"
+				},
+				{
+					"include": "#mnemonic-condition-register"
+				},
+				{
+					"include": "#mnemonic-store"
+				},
+				{
+					"include": "#mnemonic-subtract"
+				},
+				{
+					"include": "#mnemonic-tlb"
+				},
+				{
+					"include": "#mnemonic-rotate"
+				},
+				{
+					"include": "#mnemonic-shift"
+				},
+				{
+					"include": "#mnemonic-bitwise"
+				},
+				{
+					"include": "#mnemonic-xor"
+				},
+				{
+					"include": "#mnemonic-tw"
+				},
+				{
+					"include": "#mnemonic-misc"
+				}
+			]
+		},
+		"mnemonic-add": {
+			"patterns": [
+				{
+					"match": "\\badd(o|c|co|e|eo|i|ic|is|me|meo|ze|zeo)?\\b",
+					"name": "keyword.mnemonic.add" 
+				}
+			]
+		},
+		"mnemonic-and": {
+			"patterns": [
+				{
+					"match": "\\band(c|i|is)?\\b",
+					"name": "keyword.mnemonic.and"
+				},
+				{
+					"match": "\\bcrand(c)?\\b",
+					"name": "keyword.mnemonic.and.condition"
+				}
+			]
+		},
+		"mnemonic-branch": {
+			"patterns": [
+				{
+					"match": "\\bb(a|l|la)?\\b",
+					"name": "keyword.mnemonic.branch"
+				},
+				{
+					"match": "\\bbc(a|l|la)?\\b",
+					"name": "keyword.mnemonic.branch.conditional"
+				},
+				{
+					"match": "\\bbcctr(l)?\\b",
+					"name": "keyword.mnemonic.branch.conditional.count"
+				},
+				{
+					"match": "\\bbclr(l)?\\b",
+					"name": "keyword.mnemonic.branch.conditional.link"
+				}
+			]
+		},
+		"mnemonic-compare": {
+			"patterns": [
+				{
+					"match": "\\bcmp(i|l|li)?\\b",
+					"name": "keyword.mnemonic.compare"
+				}
+			]
+		},
+		"mnemonic-data-cache": {
+			"patterns": [
+				{
+					"match": "\\bdc(bf|bi|bst|bt|btst|bz)?\\b",
+					"name": "keyword.mnemonic.data-cache"
+				}
+			]
+		},
+		"mnemonic-divide": {
+			"patterns": [
+				{
+					"match": "\\bdiv(w|wo|wu|wuo)?\\b",
+					"name": "keyword.mnemonic.divide"
+				}
+			]
+		},
+		"mnemonic-load": {
+			"patterns": [
+				{
+					"match": "\\blbz(u|ux|x)?\\b",
+					"name" : "keyword.mnemonic.load.byte.zero"
+				},
+				{
+					"match": "\\blha(u|ux|x)?\\b",
+					"name": "keyword.mnemonic.load.half.algebraic"
+				},
+				{
+					"match": "\\blhz(u|ux|x)?\\b",
+					"name": "keyword.mnemonic.load.half.zero"
+				},
+				{
+					"match": "\\blhbrx\\b",
+					"name": "keyword.mnemonic.load.half.reverse"
+				},
+				{
+					"match": "\\blw(arx|brx|z|zu|zux|zx)\\b",
+					"name": "keyword.mnemonic.load.word"
+				},
+				{
+					"match": "\\blsw(i|x)\\b",
+					"name": "keyword.mnemonic.load.string"
+				},
+				{
+					"match": "\\blmw\\b",
+					"name": "keyword.mnemonic.load.misc"
+				}
+			]
+		},
+		"mnemonic-move": {
+			"patterns": [
+				{
+					"match": "\\bmc(rf|rxr)\\b",
+					"name": "keyword.mnemonic.move.condition"
+				},
+				{
+					"match": "\\bmf(cr|msr|spr|tb)\\b",
+					"name": "keyword.mnemonic.move.from"
+				},
+				{
+					"match": "\\bmt(crf|msr|spr)\\b",
+					"name": "keyword.mnemonic.move.to"
+				}
+			]
+		},
+		"mnemonic-multiple": {
+			"patterns": [
+				{
+					"match": "\\bmul(hw|hwu|li|lw)\\b",
+					"name": "keyword.mnemonic.multiple"
+				}
+			]
+		},
+		"mnemonic-or": {
+			"patterns": [
+				{
+					"match": "\\bor(c|i|is)?\\b",
+					"name": "keyword.mnemonic.or"
+				}
+			]
+		},
+		"mnemonic-condition-register": {
+			"patterns": [
+				{
+					"match": "\\bcr(eqv|nand|nor|or|orc|xor)\\b",
+					"name": "keyword.mnemonic.condition-register"
+				}
+			]
+		},
+		"mnemonic-store": {
+			"patterns": [
+				{
+					"match": "\\bstb(u|ux|x)?\\b",
+					"name" : "keyword.mnemonic.store.byte"
+				},
+				{
+					"match": "\\bsth(brx|u|ux|x)?\\b",
+					"name": "keyword.mnemonic.store.half"
+				},
+				{
+					"match": "\\bstw(brx|cx|u|ux|x)?\\b",
+					"name": "keyword.mnemonic.store.word"
+				},
+				{
+					"match": "\\bstsw(i|x)\\b",
+					"name": "keyword.mnemonic.store.string"
+				},
+				{
+					"match": "\\bstmw\\b",
+					"name": "keyword.mnemonic.store.misc"
+				}
+			]
+		},
+		"mnemonic-subtract": {
+			"patterns": [
+				{
+					"match": "\\bsubf(o|c|co|e|eo|ic|me|meo|ze|zeo)?\\b",
+					"name": "keyword.mnemonic.subtract" 
+				}
+			]
+		},
+		"mnemonic-tlb": {
+			"patterns": [
+				{
+					"match": "\\btlb(ia|ie|sync)\\b",
+					"name": "keyword.mnemonic.tlb"
+				}
+			]
+		},
+		"mnemonic-rotate": {
+			"patterns": [
+				{
+					"match": "\\brlw(imi|inm|nm)\\b",
+					"name": "keyword.mnemonic.rotate.left"
+				}
+			]
+		},
+		"mnemonic-shift": {
+			"patterns": [
+				{
+					"match": "\\bslw\\b",
+					"name": "keyword.mnemonic.shift.left"
+				},
+				{
+					"match": "\\bsr(aw|awi|w)\\b",
+					"name": "keyword.mnemonic.shift.right"
+				}
+			]
+		},
+		"mnemonic-tw": {
+			"patterns": [
+				{
+					"match": "\\btw(i)?\\b",
+					"name": "keyword.mnemonic.tw"
+				}
+			]
+		},
+		"mnemonic-xor": {
+			"patterns": [
+				{
+					"match": "\\bxor(i|is)?\\b",
+					"name": "keyword.mnemonic.xor"
+				}
+			]
+		},
+		"mnemonic-bitwise": {
+			"patterns": [
+				{
+					"match": "\\b(nand|nor|neg)\\b",
+					"name": "keyword.mnemonic.bitwise.misc"
+				}
+			]
+		},
+		"mnemonic-misc": {
+			"patterns": [
+				{
+					"match": "\\b(cntlzw|eciwx|ecowx|eieio|eqv|extsb|extsh|icbi|isync|sync|rfi|sc)\\b",
+					"name": "keyword.mnemonic.misc"
+				}
+			]
+		}
+	}
+}
