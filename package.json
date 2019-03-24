@@ -3,6 +3,7 @@
     "displayName": "vscode-ppc",
     "description": "PowerPC Assembly Language Support",
     "version": "0.0.1",
+    "publisher": "zachsez",
     "engines": {
         "vscode": "^1.32.0"
     },
