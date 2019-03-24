@@ -6,6 +6,8 @@ This extension provides highlighting for the PowerPC assembly laungauge. The ins
 
 Basic highlighting only. Pull requests welcome.
 
+![Example of Highlighting](https://github.com/zachsez/vscode-ppc/blob/master/images/example_highlighting.JPG)
+
 ## Known Issues
 
 I'm sure there are bunch.
