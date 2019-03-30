@@ -38,7 +38,7 @@
 					"name": "comment.line.number-sign.powerpc"
 				},
 				{
-					"match": "(//).*S",
+					"match": "(//).*$",
 					"name": "comment.line.double-slash.powerpc"
 				},
 				{

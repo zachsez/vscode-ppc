@@ -1,6 +1,6 @@
-# vcode-ppc README
+# PowerPC README
 
-This extension provides highlighting for the PowerPC assembly laungauge. The instruction set used was found in the PDFs in the references folder.
+This extension provides highlighting for the PowerPC assembly laungauge. The instruction set used can be found in the provided PDFs in the references folder.
 
 ## Features
 
@@ -10,15 +10,18 @@ Basic highlighting only. Pull requests welcome.
 
 ## Known Issues
 
-I'm sure there are bunch.
+None
 
 ## Release Notes
 
-It my first try.
+### 0.0.4
 
-### 1.0.0
+- Resolved Issue 1 double slash single line comments work now.
+- Created test case directory and moved test files into directory.
 
-Initial release of of highlighting.
+### 0.0.3
+
+- Initial release of of highlighting.
 
 -----------------------------------------------------------------------------------------------------------
 
