@@ -25,6 +25,27 @@
             "language": "powerpc",
             "scopeName": "source.powerpc",
             "path": "./syntaxes/powerpc.tmLanguage.json"
+        }],
+        "configuration": [{
+            "title": "PowerPC Configuration",
+            "properties": {
+                "vscode-ppc.highlightBlockComments": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Set whether block comments should be highlighted.",
+                    "scope": "resource"
+                },
+                "vscode-ppc.singleLineCommentType": {
+                    "type": "string",
+                    "default": "pound sign",
+                    "enum": [
+                        "Pound sign (#)",
+                        "Double slash (//)"
+                    ],
+                    "description": "Set single line comment type.",
+                    "scope": "resource"
+                }
+            }
         }]
     },
     "repository": {
