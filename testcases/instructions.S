@@ -161,6 +161,9 @@ subfme
 subfmeo
 subfze
 subfzeo
+sub
+subi
+subis
 
 # shift
 slw			# shift left word
