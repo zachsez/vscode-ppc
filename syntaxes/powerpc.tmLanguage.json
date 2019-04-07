@@ -328,6 +328,10 @@
 				{
 					"match": "\\bsubf(o|c|co|e|eo|ic|me|meo|ze|zeo)?\\b",
 					"name": "keyword.mnemonic.subtract" 
+				},
+				{
+					"match": "\\bsub(o|c|co|i|is)?\\b",
+					"name": "keyword.mnemonic.subtract"
 				}
 			]
 		},
