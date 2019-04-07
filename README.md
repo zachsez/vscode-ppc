@@ -18,6 +18,8 @@ None
 
 - Resolved Issue 1 double slash single line comments work now.
 - Created test case directory and moved test files into directory.
+- Comments are not now C-style
+- Snippets are in progress
 
 ### 0.0.3
 
