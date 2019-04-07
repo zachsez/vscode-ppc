@@ -34,10 +34,6 @@
 		"comments": {
 			"patterns": [
 				{
-					"match": "(#).*$",
-					"name": "comment.line.number-sign.powerpc"
-				},
-				{
 					"match": "(//).*$",
 					"name": "comment.line.double-slash.powerpc"
 				},

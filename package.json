@@ -29,20 +29,10 @@
         "configuration": [{
             "title": "PowerPC Configuration",
             "properties": {
-                "vscode-ppc.highlightBlockComments": {
+                "vscode-ppc.booleanTestSetting": {
                     "type": "boolean",
                     "default": true,
-                    "description": "Set whether block comments should be highlighted.",
-                    "scope": "resource"
-                },
-                "vscode-ppc.singleLineCommentType": {
-                    "type": "string",
-                    "default": "pound sign",
-                    "enum": [
-                        "Pound sign (#)",
-                        "Double slash (//)"
-                    ],
-                    "description": "Set single line comment type.",
+                    "description": "Test setting.",
                     "scope": "resource"
                 }
             }
