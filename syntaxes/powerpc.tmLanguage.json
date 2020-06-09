@@ -15,7 +15,7 @@
 			"include": "#strings"
 		},
 		{
-			"include": "#constants"			
+			"include": "#constants"
 		},
 		{
 			"include": "#entities"
@@ -26,10 +26,7 @@
 	],
 	"repository": {
 		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.powerpc",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
+			"patterns": []
 		},
 		"comments": {
 			"patterns": [
@@ -38,17 +35,25 @@
 					"name": "comment.line.double-slash.powerpc"
 				},
 				{
+					"match": "(;).*$",
+					"name": "comment.line.semicolon.powerpc"
+				},
+				{
+					"match": "(# ).*$",
+					"name": "comment.line.hash.powerpc"
+				},
+				{
 					"name": "comment.block.powerpc",
 					"begin": "\\/\\*",
 					"beginCaptures": {
-					  "0": {
-						"name": "comment.begin.powerpc"
-					  }
+						"0": {
+							"name": "comment.begin.powerpc"
+						}
 					},
 					"endCaptures": {
-					  "0": {
-						"name": "comment.end.powerpc"
-					  }
+						"0": {
+							"name": "comment.end.powerpc"
+						}
 					},
 					"end": "\\*\\/"
 				}
@@ -94,6 +99,38 @@
 					"name": "entity.name.section.powerpc"
 				},
 				{
+					"match": "\\.(align|balign|fill|incbin|include|set|extern|space)",
+					"name": "entity.name.cmd.powerpc"
+				},
+				{
+					"match": "\\.(ascii|asciz|byte|double|float|int|quad|short|single|string|word|long)",
+					"name": "entity.name.cmd.datatype.powerpc"
+				},
+				{
+					"name": "entity.name.cmd.powerpc",
+					"match": "(\\.(section)) (\\.(text|data|bss))",
+					"captures": {
+						"1": {
+							"name": "entity.name.cmd.powerpc.cmd"
+						},
+						"3": {
+							"name": "entity.name.section.powerpc"
+						}
+					}
+				},
+				{
+					"name": "entity.name.cmd.powerpc",
+					"match": "(\\.(globl|global)) ([\\w \\,]+)",
+					"captures": {
+						"1": {
+							"name": "entity.name.cmd.powerpc.cmd"
+						},
+						"3": {
+							"name": "entity.name.function.powerpc"
+						}
+					}
+				},
+				{
 					"match": "\\w+:",
 					"name": "entity.name.function.powerpc"
 				}
@@ -118,6 +155,9 @@
 				},
 				{
 					"include": "#mnemonic-divide"
+				},
+				{
+					"include": "#mnemonic-float"
 				},
 				{
 					"include": "#mnemonic-load"
@@ -167,15 +207,20 @@
 			"patterns": [
 				{
 					"match": "\\badd(o|c|co|e|eo|i|ic|is|me|meo|ze|zeo)?\\b",
-					"name": "keyword.mnemonic.add" 
+					"name": "keyword.mnemonic.add"
 				}
 			]
 		},
 		"mnemonic-and": {
 			"patterns": [
 				{
-					"match": "\\band(c|i|is)?\\b",
-					"name": "keyword.mnemonic.and"
+					"match": "\\b((and|andc|andi|andis)[\\.]?)\\s+(\\B|\\b)",
+					"name": "keyword.mnemonic.and",
+					"captures": {
+						"1": {
+							"name": "keyword.mnemonic.and"
+						}
+					}
 				},
 				{
 					"match": "\\bcrand(c)?\\b",
@@ -186,27 +231,76 @@
 		"mnemonic-branch": {
 			"patterns": [
 				{
-					"match": "\\bb(a|l|la)?\\b",
+					"match": "\\bblr\\b",
 					"name": "keyword.mnemonic.branch"
 				},
 				{
-					"match": "\\bbc(a|l|la)?\\b",
-					"name": "keyword.mnemonic.branch.conditional"
+					"match": "\\b(b(a|l|la)?)\\s+(\\w+)",
+					"name": "keyword.mnemonic.branch",
+					"captures": {
+						"1": {
+							"name": "keyword.mnemonic.branch"
+						},
+						"3": {
+							"name": "entity.name.function.powerpc"
+						}
+					}
+				},
+				{
+					"match": "\\b(b(a|l|la)?)\\s+([+-]\\w+)",
+					"name": "keyword.mnemonic.branch",
+					"captures": {
+						"1": {
+							"name": "keyword.mnemonic.branch"
+						},
+						"3": {
+							"name": "entity.name.function.powerpc"
+						}
+					}
+				},
+				{
+					"match": "\\b(bc(a|l|la)?)\\s+(\\w+)?",
+					"name": "keyword.mnemonic.branch.conditional",
+					"captures": {
+						"1": {
+							"name": "keyword.mnemonic.branch.conditional"
+						},
+						"3": {
+							"name": "entity.name.function.powerpc"
+						}
+					}
 				},
 				{
 					"match": "\\bbcctr(l)?\\b",
 					"name": "keyword.mnemonic.branch.conditional.count"
 				},
 				{
-					"match": "\\bbclr(l)?\\b",
-					"name": "keyword.mnemonic.branch.conditional.link"
+					"match": "\\b((bnelr|beqlr|bltlr|blelr|bgtlr|bgelr|bctr|bctrl|blrl)[-+]?)",
+					"name": "aaaakeyword.mnemonic.branch.conditional.misc",
+					"captures": {
+						"1": {
+							"name": "keyword.mnemonic.branch.misc"
+						}
+					}
+				},
+				{
+					"match": "\\b((bdnz|bne|beq|ble|blt|bge|bgt)[-+]?)\\s+(\\w+)?",
+					"name": "aaaakeyword.mnemonic.branch.conditional.misc",
+					"captures": {
+						"1": {
+							"name": "keyword.mnemonic.branch.misc"
+						},
+						"3": {
+							"name": "entity.name.function.powerpc"
+						}
+					}
 				}
 			]
 		},
 		"mnemonic-compare": {
 			"patterns": [
 				{
-					"match": "\\bcmp(i|l|li)?\\b",
+					"match": "\\bcmp(i|l|li|w|wi|lwi|lw)?\\b",
 					"name": "keyword.mnemonic.compare"
 				}
 			]
@@ -227,11 +321,19 @@
 				}
 			]
 		},
+		"mnemonic-float": {
+			"patterns": [
+				{
+					"match": "\\b(stfs|lfs|fabs|fctiw|stfiwx|fmuls|fdivs|fmr|lfd|fadds|stfd)\\b",
+					"name": "keyword.mnemonic.float"
+				}
+			]
+		},
 		"mnemonic-load": {
 			"patterns": [
 				{
 					"match": "\\blbz(u|ux|x)?\\b",
-					"name" : "keyword.mnemonic.load.byte.zero"
+					"name": "keyword.mnemonic.load.byte.zero"
 				},
 				{
 					"match": "\\blha(u|ux|x)?\\b",
@@ -266,12 +368,16 @@
 					"name": "keyword.mnemonic.move.condition"
 				},
 				{
-					"match": "\\bmf(cr|msr|spr|tb)\\b",
+					"match": "\\bmf(cr|msr|spr|tb|ctr|lr|xer|sprg|srr0|srr1)\\b",
 					"name": "keyword.mnemonic.move.from"
 				},
 				{
-					"match": "\\bmt(crf|msr|spr)\\b",
+					"match": "\\bmt(cr|crf|msr|spr|ctr|lr|xer|sprg|srr0|srr1)\\b",
 					"name": "keyword.mnemonic.move.to"
+				},
+				{
+					"match": "\\bmr(.)?(\\B|\\b)",
+					"name": "keyword.mnemonic.move"
 				}
 			]
 		},
@@ -288,6 +394,10 @@
 				{
 					"match": "\\bor(c|i|is)?\\b",
 					"name": "keyword.mnemonic.or"
+				},
+				{
+					"match": "\\bnop\\b",
+					"name": "keyword.mnemonic.or.nop"
 				}
 			]
 		},
@@ -303,7 +413,7 @@
 			"patterns": [
 				{
 					"match": "\\bstb(u|ux|x)?\\b",
-					"name" : "keyword.mnemonic.store.byte"
+					"name": "keyword.mnemonic.store.byte"
 				},
 				{
 					"match": "\\bsth(brx|u|ux|x)?\\b",
@@ -327,11 +437,16 @@
 			"patterns": [
 				{
 					"match": "\\bsubf(o|c|co|e|eo|ic|me|meo|ze|zeo)?\\b",
-					"name": "keyword.mnemonic.subtract" 
+					"name": "keyword.mnemonic.subtract"
 				},
 				{
-					"match": "\\bsub(o|c|co|i|is)?\\b",
-					"name": "keyword.mnemonic.subtract"
+					"match": "\\b((sub|subo|subc|subco|subi|subis|subic)?[\\.]?)\\s+\\b",
+					"name": "keyword.mnemonic.subtract",
+					"captures": {
+						"1": {
+							"name": "keyword.mnemonic.subtract"
+						}
+					}
 				}
 			]
 		},
@@ -348,17 +463,25 @@
 				{
 					"match": "\\brlw(imi|inm|nm)\\b",
 					"name": "keyword.mnemonic.rotate.left"
+				},
+				{
+					"match": "\\b((extrwi|clrlwi)[\\.]?)\\s+\\b",
+					"captures": {
+						"1": {
+							"name": "keyword.mnemonic.rotate.special"
+						}
+					}
 				}
 			]
 		},
 		"mnemonic-shift": {
 			"patterns": [
 				{
-					"match": "\\bslw\\b",
+					"match": "\\b(slw|slwi)\\b",
 					"name": "keyword.mnemonic.shift.left"
 				},
 				{
-					"match": "\\bsr(aw|awi|w)\\b",
+					"match": "\\b(sraw|srawi|srw|srwi)\\b",
 					"name": "keyword.mnemonic.shift.right"
 				}
 			]
