@@ -12,16 +12,16 @@ ba
 bl
 bla
 bc
-bca 
-bcl 
-bcla 
+bca
+bcl
+bcla
 bcctr
 bcctrl
-bclr 
+bclr
 bclrl
 
 # compare
-cmp 
+cmp
 cmpi
 cmpl
 cmpli
@@ -110,11 +110,11 @@ mtspr		# move to special-purpose register
 # multiple
 mulhw
 mulhwu
-mulli 
+mulli
 mullw
 
 # or
-or 
+or
 orc
 ori
 oris
@@ -124,7 +124,7 @@ oris
 creqv
 crnand
 crnor
-cror 
+cror
 crorc
 crxor
 
@@ -133,7 +133,7 @@ crxor
 stb			# store byte
 stbu		# store byte with update
 stbux		# store byte with update indexed
-stbx		
+stbx
 sth
 sthbrx
 sthu
@@ -142,12 +142,14 @@ sthx
 stmw
 stswi
 stswx
-stw 
+stw
 stwbrx
 stwcx
 stwu
 stwux
 stwx
+std         # store double word
+stdu        # store double word with update
 
 # subtract
 subf

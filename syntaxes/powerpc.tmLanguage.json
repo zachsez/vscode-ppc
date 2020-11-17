@@ -430,6 +430,10 @@
 				{
 					"match": "\\bstmw\\b",
 					"name": "keyword.mnemonic.store.misc"
+				},
+				{
+					"match": "\\bstd(u)?\\b",
+					"name": "keyword.mnemonic.sotre.double"
 				}
 			]
 		},
