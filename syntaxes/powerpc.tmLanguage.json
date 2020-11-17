@@ -200,6 +200,9 @@
 				},
 				{
 					"include": "#mnemonic-misc"
+				},
+				{
+					"include": "#mnemonic-registers"
 				}
 			]
 		},
@@ -519,6 +522,14 @@
 				{
 					"match": "\\b(cntlzw|eciwx|ecowx|eieio|eqv|extsb|extsh|icbi|isync|sync|rfi|sc)\\b",
 					"name": "keyword.mnemonic.misc"
+				}
+			]
+		},
+		"mnemonic-registers": {
+			"patterns": [
+				{
+					"match": "\\br([0-9]|[12][0-9]|3[01])\\b",
+					"name": "keyword.mnemonic.register"
 				}
 			]
 		}
